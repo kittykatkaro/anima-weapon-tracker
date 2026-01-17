@@ -1,6 +1,6 @@
 import './style.css'
 import Alpine from 'alpinejs'
-import { ANIMA_DATA } from './data.js'
+import { ANIMA_DATA, JOBS, STAGE_INFO } from './data.js'
 
 window.Alpine = Alpine
 
@@ -19,56 +19,97 @@ const STAGE_ORDER = [
 
 document.addEventListener('alpine:init', () => {
     Alpine.data('relicApp', () => ({
-        weaponCount: 1,
+        // Data Sources
         items: ANIMA_DATA,
-        inventory: {}, 
+        availableJobs: JOBS,
+        stageInfo: STAGE_INFO,
+        
+        // State
+        selectedJobs: [], 
+        inventory: {},
+        showJobSelector: false,
 
         // --- 1. INITIALIZATION ---
         init() {
-            // Load saved data from Browser LocalStorage
+            // Load Inventory
             try {
-                const sCount = localStorage.getItem('relic_count');
-                if (sCount) this.weaponCount = parseInt(sCount);
-                
                 const sInv = localStorage.getItem('relic_inventory');
                 if (sInv) this.inventory = JSON.parse(sInv);
             } catch (e) { localStorage.clear(); }
 
-            // Initialize safe defaults for every item (prevents UI errors)
+            // Load Selected Jobs
+            try {
+                const sJobs = localStorage.getItem('relic_jobs');
+                if (sJobs) {
+                    this.selectedJobs = JSON.parse(sJobs);
+                } else {
+                    this.selectedJobs = ['PLD']; // Default
+                }
+            } catch (e) { this.selectedJobs = ['PLD']; }
+
+            // Initialize defaults
             this.items.forEach(item => {
                 if (this.inventory[item.id] === undefined) {
-                    // Checkboxes get 'false', Number inputs get empty string ''
                     this.inventory[item.id] = item.type === 'checklist' ? false : '';
                 }
             });
 
-            // Auto-save when data changes
-            this.$watch('weaponCount', v => localStorage.setItem('relic_count', v));
+            // Watchers for Auto-Save
+            this.$watch('selectedJobs', v => localStorage.setItem('relic_jobs', JSON.stringify(v)));
             this.$watch('inventory', v => localStorage.setItem('relic_inventory', JSON.stringify(v)), { deep: true });
         },
 
-        // --- 2. CORE MATH HELPERS ---
+        // --- 2. HELPERS ---
+        
+        // Dynamic Weapon Count based on selected jobs
+        get weaponCount() {
+            return this.selectedJobs.length || 1; 
+        },
+
+        toggleJob(jobId) {
+            if (this.selectedJobs.includes(jobId)) {
+                this.selectedJobs = this.selectedJobs.filter(id => id !== jobId);
+            } else {
+                this.selectedJobs.push(jobId);
+            }
+        },
+
         getGoal(item) {
             return item.qty * this.weaponCount;
         },
 
         getOwned(item) {
-            // Logic for Checkboxes: If Checked, you own 100% of the goal.
             if (item.type === 'checklist') {
                 return this.inventory[item.id] ? this.getGoal(item) : 0;
             }
-            // Logic for Numbers: Return what the user typed.
             return parseInt(this.inventory[item.id]) || 0;
         },
 
         getRemaining(item) {
-            // Goal - Owned (Min 0)
-            const diff = this.getGoal(item) - this.getOwned(item);
-            return Math.max(0, diff);
+            return Math.max(0, this.getGoal(item) - this.getOwned(item));
         },
 
-        // --- 3. UI HELPERS ---
-        
+        // Calculate Progress % for a SINGLE Stage
+        getStageProgress(stageName) {
+            const group = this.items.filter(i => i.stage === stageName);
+            if (!group.length) return 0;
+
+            let totalNeeded = 0;
+            let totalOwned = 0;
+
+            group.forEach(item => {
+                const goal = this.getGoal(item);
+                const owned = Math.min(this.getOwned(item), goal);
+                totalNeeded += goal;
+                totalOwned += owned;
+            });
+
+            if (totalNeeded === 0) return 100;
+            return Math.floor((totalOwned / totalNeeded) * 100);
+        },
+
+        // --- 3. UI & GROUPING ---
+
         // Calculates global % for the top progress bar
         getTotalProgress() {
             let totalNeeded = 0;
@@ -76,7 +117,6 @@ document.addEventListener('alpine:init', () => {
 
             this.items.forEach(item => {
                 const goal = this.getGoal(item);
-                // Cap owned at goal amount (don't give credit for over-capping)
                 const owned = Math.min(this.getOwned(item), goal); 
                 totalNeeded += goal;
                 totalOwned += owned;
@@ -86,21 +126,20 @@ document.addEventListener('alpine:init', () => {
             return Math.floor((totalOwned / totalNeeded) * 100);
         },
 
-        // Button action to wipe data
         resetAll() {
             if(confirm("Are you sure you want to clear all inventory data?")) {
                 this.inventory = {};
+                this.selectedJobs = ['PLD'];
                 this.items.forEach(item => {
                     this.inventory[item.id] = item.type === 'checklist' ? false : '';
                 });
                 localStorage.removeItem('relic_inventory');
+                localStorage.removeItem('relic_jobs');
             }
         },
 
-        // Groups items into stages and sorts them by STAGE_ORDER
         groupedItems() {
             const groups = [];
-            
             this.items.forEach(item => {
                 const stageName = item.stage || "Unknown";
                 let group = groups.find(g => g.name === stageName);
@@ -111,7 +150,6 @@ document.addEventListener('alpine:init', () => {
                 group.items.push(item);
             });
             
-            // Sort Logic: Finds index in the array at top of file
             return groups.sort((a, b) => {
                 const indexA = STAGE_ORDER.indexOf(a.name);
                 const indexB = STAGE_ORDER.indexOf(b.name);
@@ -121,7 +159,6 @@ document.addEventListener('alpine:init', () => {
             });
         },
 
-        // Footer Logic: Sums up costs for specific currencies
         getTotalLiability(currencyName) {
             let total = 0;
             this.items.forEach(item => {
@@ -134,6 +171,15 @@ document.addEventListener('alpine:init', () => {
                 }
             });
             return total;
+        },
+
+        handleMissingIcon(event) {
+            // 1. Stop the loop! 
+            // This prevents the error from firing again if the placeholder also fails.
+            event.target.onerror = null; 
+            
+            // 2. Set the fallback image
+            event.target.src = '/images/icons/placeholder.png';
         }
     }))
 })

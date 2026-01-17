@@ -331,3 +331,33 @@ export const ANIMA_DATA = [
         ]
     }
 ];
+
+// New Constant: List of all Jobs available for Anima Weapons
+export const JOBS = [
+    { id: 'PLD', label: 'Paladin', role: 'tank' },
+    { id: 'WAR', label: 'Warrior', role: 'tank' },
+    { id: 'DRK', label: 'Dark Knight', role: 'tank' },
+    { id: 'WHM', label: 'White Mage', role: 'healer' },
+    { id: 'SCH', label: 'Scholar', role: 'healer' },
+    { id: 'AST', label: 'Astrologian', role: 'healer' },
+    { id: 'MNK', label: 'Monk', role: 'dps' },
+    { id: 'DRG', label: 'Dragoon', role: 'dps' },
+    { id: 'NIN', label: 'Ninja', role: 'dps' },
+    { id: 'BRD', label: 'Bard', role: 'dps' },
+    { id: 'MCH', label: 'Machinist', role: 'dps' },
+    { id: 'BLM', label: 'Black Mage', role: 'dps' },
+    { id: 'SMN', label: 'Summoner', role: 'dps' }
+];
+
+// New Constant: Descriptions for each stage
+export const STAGE_INFO = {
+    "1. Animated (i170)": "Farm FATEs in Heavensward zones to get crystals.",
+    "2. Awoken (i200)": "Run 10 specific dungeons with your weapon equipped.",
+    "3. Anima (i210)": "The massive grind. Collect tokens via Poetics, Tribes, or Alex Normal.",
+    "4. Hyperconductive (i230)": "Collect 5 Aether Oils (Weekly CT quest is best).",
+    "5. Reconditioned (i240)": "Feed Crystal Sand & Umbrite to the weapon stats.",
+    "6. Sharpened (i260)": "Collect Singing Clusters via Daily/Weekly quests.",
+    "7. Complete (i270)": "Run 3 HM Primals and collect 15 Pneumite.",
+    "8. Lux (i275)": "The victory lap. Defeat primal pairs and buy the Ink.",
+    "9. Victory": "Enjoy your shiny new weapon!"
+};
