@@ -1,4 +1,4 @@
-// Global Icon Constants based on your manual folder structure
+// Global Icon Constants
 const ICONS = {
     POETICS: '/images/icons/poetics.png',
     GC_SEALS: '/images/icons/gc-seals.png',
@@ -7,21 +7,32 @@ const ICONS = {
     PURPLE_SCRIPS: '/images/icons/purple-scrips.png', 
     AMBER_VILEKIN: '/images/icons/amber-vilekin.png',
     MOONSTONE: '/images/icons/moonstone.png',
-    // Tribe Tokens
+    DUNGEON: '/images/icons/dungeon.png',
+    REPEATQUEST: '/images/icons/repeat-quest.png',
+    SCRIP: 'images/icons/scrip-token.png',
+    TRIAL: 'images/icons/trials.png',
+
+
+// Tribe Tokens
     AMALJAA: '/images/icons/amaljaa-token.png',
     SAHAGIN: '/images/icons/sahagin_token.png',
     KOBOLD: '/images/icons/kobold-token.png',
     SYLPH: '/images/icons/sylph-token.png',
-    // Alexander Precision Parts
+    VANU: '/images/icons/vanu-token.png',
+    VATH: 'images/icons/vath-token.png',
+    MOOGLE: 'images/icons/moogle-token.png',
+
+// Alexander Precision Parts
     A1_BOLT: '/images/icons/precision-gordian-bolt.png',
     A2_LENS: '/images/icons/precision-gordian-lens.png',
     A3_SHAFT: '/images/icons/precision-gordian-shaft.png',
     A4_SPRING: '/images/icons/precision-gordian-spring.png',
-    PLACEHOLDER: '/images/icons/placeholder.png'
+
+PLACEHOLDER: '/images/icons/placeholder.png'
 };
 
 export const ANIMA_DATA = [
-    // --- STAGE 1: Animated (i170) ---
+// --- STAGE 1: Animated (i170) ---
     {
         id: 'crystals_wind',
         stage: '1. Animated (i170)',
@@ -32,7 +43,6 @@ export const ANIMA_DATA = [
         tip: "FATEs in Churning Mists. Drop rate is approx 10%.",
         options: [
             { label: "FATE (Churning Mists)", cost: 0, currency: "" },
-            { label: "Zodiac Exchange", cost: 0, currency: "Zodiac Zeta" }
         ]
     },
     {
@@ -45,7 +55,6 @@ export const ANIMA_DATA = [
         tip: "FATEs in Azys Lla.",
         options: [
             { label: "FATE (Azys Lla)", cost: 0, currency: "" },
-            { label: "Zodiac Exchange", cost: 0, currency: "Zodiac Zeta" }
         ]
     },
     {
@@ -58,7 +67,6 @@ export const ANIMA_DATA = [
         tip: "FATEs in Dravanian Forelands.",
         options: [
             { label: "FATE (Dravanian Forelands)", cost: 0, currency: "" },
-            { label: "Zodiac Exchange", cost: 0, currency: "Zodiac Zeta" }
         ]
     },
     {
@@ -71,7 +79,6 @@ export const ANIMA_DATA = [
         tip: "FATEs in Coerthas Western Highlands.",
         options: [
             { label: "FATE (Coerthas Western)", cost: 0, currency: "" },
-            { label: "Zodiac Exchange", cost: 0, currency: "Zodiac Zeta" }
         ]
     },
     {
@@ -84,7 +91,6 @@ export const ANIMA_DATA = [
         tip: "FATEs in Dravanian Hinterlands.",
         options: [
             { label: "FATE (Dravanian Hinterlands)", cost: 0, currency: "" },
-            { label: "Zodiac Exchange", cost: 0, currency: "Zodiac Zeta" }
         ]
     },
     {
@@ -97,25 +103,37 @@ export const ANIMA_DATA = [
         tip: "FATEs in The Sea of Clouds.",
         options: [
             { label: "FATE (Sea of Clouds)", cost: 0, currency: "" },
-            { label: "Zodiac Exchange", cost: 0, currency: "Zodiac Zeta" }
         ]
     },
 
-    // --- STAGE 2: Awoken (i200) ---
-    {
+// --- STAGE 2: Awoken (i200) ---
+   {
         id: 'dungeon_crawl',
         stage: '2. Awoken (i200)',
-        name: "Dungeon Crawl (10 Dungeons)",
+        name: "Dungeon Crawl",
         type: 'checklist',
-        icon: ICONS.PLACEHOLDER,
+        icon: ICONS.DUNGEON, // Ensure you added this icon to constants!
         qty: 1,
-        tip: "You MUST have the Animated weapon equipped when exiting the dungeon.",
+        tip: "Equip your Animated weapon before exiting the dungeon!",
+        // NEW: The list that will appear as tooltip
+        tooltip: [
+            "1. Snowcloak",
+            "2. Sastasha (Hard)",
+            "3. The Sunken Temple of Qarn (Hard)",
+            "4. The Keeper of the Lake",
+            "5. The Wanderer's Palace (Hard)",
+            "6. Amdapor Keep (Hard)",
+            "7. The Dusk Vigil",
+            "8. Sohm Al",
+            "9. The Aery",
+            "10. The Vault"
+        ],
         options: [
             { label: "Duty Complete", cost: 0, currency: "" }
         ]
     },
 
-    // --- STAGE 3: Anima (i210) - Tokens ---
+// --- STAGE 3: Anima (i210) - Tokens ---
     {
         id: 'unid_bone',
         stage: '3. Anima (i210)',
@@ -123,12 +141,15 @@ export const ANIMA_DATA = [
         type: 'item',
         icon: '/images/icons/unid-bone.png',
         qty: 10,
-        tip: "Precision Bolt drops from Alexander Gordias (A1) Normal.",
+        tip: "Precision Gordian Bolt drops from Alexander - The Fist of the Father (A1).",
         options: [
             { label: "Poetics", cost: 150, currency: "Poetics", icon: ICONS.POETICS },
-            { label: "Amalj'aa Tokens", cost: 3, currency: "Amalj'aa", icon: ICONS.AMALJAA },
+            { label: "Amalj'aa Tokens", cost: 3, currency: "Steel Amalj'ok", icon: ICONS.AMALJAA },
+            { label: "Vanu Vanu Tokens", cost: 6, currency: "Vanu Whitebone", icon: ICONS.VANU},
+            { label: "Vath Tokens", cost: 6, currency: "Black Copper Gil", icon: ICONS.VATH},
+            { label: "Moogle Tokens", cost: 18, currency: "Carved Kupo Nut", icon: ICONS.MOOGLE},
             { label: "Allied Seals", cost: 300, currency: "Allied Seals", icon: ICONS.ALLIED_SEALS },
-            { label: "Alex P1 (Bolt)", cost: 3, currency: "Alex P1", icon: ICONS.A1_BOLT }
+            { label: "Precision Gordian Bolt", cost: 3, currency: "Alex P1", icon: ICONS.A1_BOLT }
         ]
     },
     {
@@ -138,11 +159,14 @@ export const ANIMA_DATA = [
         type: 'item',
         icon: '/images/icons/unid-shell.png',
         qty: 10,
-        tip: "Precision Lens drops from Alexander Gordias (A2) Normal.",
+        tip: "Precision Lens drops from Alexander - The Cuff of the Father (A2) Normal.",
         options: [
             { label: "Poetics", cost: 150, currency: "Poetics", icon: ICONS.POETICS },
             { label: "Sahagin Tokens", cost: 3, currency: "Sahagin", icon: ICONS.SAHAGIN },
-            { label: "Alex P2 (Lens)", cost: 3, currency: "Alex P2", icon: ICONS.A2_LENS }
+            { label: "Vanu Vanu Tokens", cost: 6, currency: "Vanu Whitebone", icon: ICONS.VANU},
+            { label: "Vath Tokens", cost: 6, currency: "Black Copper Gil", icon: ICONS.VATH},
+            { label: "Moogle Tokens", cost: 18, currency: "Carved Kupo Nut", icon: ICONS.MOOGLE},
+            { label: " Precision Gordian Lens", cost: 3, currency: "Alex P2", icon: ICONS.A2_LENS }
         ]
     },
     {
@@ -152,11 +176,14 @@ export const ANIMA_DATA = [
         type: 'item',
         icon: '/images/icons/unid-ore.png',
         qty: 10,
-        tip: "Precision Shaft drops from Alexander Gordias (A3) Normal.",
+        tip: "Precision Shaft drops from Alexander - The Arm of the Father (A3) Normal.",
         options: [
             { label: "Poetics", cost: 150, currency: "Poetics", icon: ICONS.POETICS },
             { label: "Kobold Tokens", cost: 3, currency: "Kobold", icon: ICONS.KOBOLD },
-            { label: "Alex P3 (Shaft)", cost: 3, currency: "Alex P3", icon: ICONS.A3_SHAFT }
+            { label: "Vanu Vanu Tokens", cost: 6, currency: "Vanu Whitebone", icon: ICONS.VANU},
+            { label: "Vath Tokens", cost: 6, currency: "Black Copper Gil", icon: ICONS.VATH},
+            { label: "Moogle Tokens", cost: 18, currency: "Carved Kupo Nut", icon: ICONS.MOOGLE},
+            { label: "Precision Gordian Spring", cost: 3, currency: "Alex P3", icon: ICONS.A3_SHAFT }
         ]
     },
     {
@@ -170,6 +197,9 @@ export const ANIMA_DATA = [
         options: [
             { label: "Poetics", cost: 150, currency: "Poetics", icon: ICONS.POETICS },
             { label: "Sylph Tokens", cost: 3, currency: "Sylph", icon: ICONS.SYLPH },
+            { label: "Vanu Vanu Tokens", cost: 6, currency: "Vanu Whitebone", icon: ICONS.VANU},
+            { label: "Vath Tokens", cost: 6, currency: "Black Copper Gil", icon: ICONS.VATH},
+            { label: "Moogle Tokens", cost: 18, currency: "Carved Kupo Nut", icon: ICONS.MOOGLE},
             { label: "Allied Seals", cost: 300, currency: "Allied Seals", icon: ICONS.ALLIED_SEALS },
             { label: "Alex P4 (Spring)", cost: 3, currency: "Alex P4", icon: ICONS.A4_SPRING }
         ]
@@ -183,10 +213,9 @@ export const ANIMA_DATA = [
         type: 'item',
         icon: '/images/icons/francesca.png',
         qty: 4,
-        tip: "HQ is required. Can be bought on Market Board.",
+        tip: "Can also be crafted. Refer to crafting log.",
         options: [
             { label: "GC Seals", cost: 5000, currency: "GC Seals", icon: ICONS.GC_SEALS },
-            { label: "Market Board", cost: 0, currency: "Gil", icon: ICONS.GIL }
         ]
     },
     {
@@ -196,10 +225,9 @@ export const ANIMA_DATA = [
         type: 'item',
         icon: '/images/icons/mirror.png',
         qty: 4,
-        tip: "HQ is required. Can be bought on Market Board.",
+        tip: "Can also be crafted. Refer to crafting log.",
         options: [
             { label: "GC Seals", cost: 5000, currency: "GC Seals", icon: ICONS.GC_SEALS },
-            { label: "Market Board", cost: 0, currency: "Gil", icon: ICONS.GIL }
         ]
     },
     {
@@ -209,10 +237,9 @@ export const ANIMA_DATA = [
         type: 'item',
         icon: '/images/icons/arrow.png',
         qty: 4,
-        tip: "HQ is required. Can be bought on Market Board.",
+        tip: "Can also be crafted. Refer to crafting log.",
         options: [
             { label: "GC Seals", cost: 5000, currency: "GC Seals", icon: ICONS.GC_SEALS },
-            { label: "Market Board", cost: 0, currency: "Gil", icon: ICONS.GIL }
         ]
     },
     {
@@ -222,14 +249,13 @@ export const ANIMA_DATA = [
         type: 'item',
         icon: '/images/icons/kingcake.png',
         qty: 4,
-        tip: "HQ is required. Can be bought on Market Board.",
+        tip: "Can also be crafted. Refer to crafting log.",
         options: [
             { label: "GC Seals", cost: 5000, currency: "GC Seals", icon: ICONS.GC_SEALS },
-            { label: "Market Board", cost: 0, currency: "Gil", icon: ICONS.GIL }
         ]
     },
 
-    // --- STAGE 4: Hyperconductive (i230) ---
+// --- STAGE 4: Hyperconductive (i230) ---
     {
         id: 'oil',
         stage: '4. Hyperconductive (i230)',
@@ -240,11 +266,11 @@ export const ANIMA_DATA = [
         tip: "Weekly quest 'The Gift of the Archmagus' gives 1 oil.",
         options: [
             { label: "Poetics", cost: 350, currency: "Poetics", icon: ICONS.POETICS },
-            { label: "Weekly CT Quest", cost: 0, currency: "" }
+            { label: "Weekly CT Quest", cost: 0, currency: "", icon: ICONS.REPEATQUEST }
         ]
     },
 
-    // --- STAGE 5: Reconditioned (i240) ---
+// --- STAGE 5: Reconditioned (i240) ---
     {
         id: 'umbrite',
         stage: '5. Reconditioned (i240)',
@@ -264,16 +290,28 @@ export const ANIMA_DATA = [
         type: 'item',
         icon: '/images/icons/crystal-sand.png',
         qty: 75,
-        tip: "Use 'Amber Vilekin' (Levequests) or 'Moonstones' (GC Seals) for fastest results.",
+        tip: "Trade items to Ulan. Note: Only the most efficient methods are listed below (others exist). Costs are per 1 Sand.",
         options: [
-            { label: "Purple Scrips", cost: 5, currency: "Purple Scrips", icon: ICONS.PURPLE_SCRIPS },
-            { label: "Poetics", cost: 225, currency: "Poetics", icon: ICONS.POETICS },
-            { label: "Amber Vilekin", cost: 1, currency: "Amber Vilekin", icon: ICONS.AMBER_VILEKIN },
-            { label: "Moonstones", cost: 5, currency: "GC Seals", icon: ICONS.MOONSTONE }
+            // 1. SCRIP TOKENS
+            // Trade: 5 Blue Tokens = 2 Sands -> Cost: 2.5 Tokens per Sand
+            { label: "Blue Crafters' Scrip Token", cost: 2.5, currency: "Tokens", icon: ICONS.SCRIP },
+
+            // 2. LEVEQUEST ITEM
+            // Trade: 1 Amber-encased Vilekin = 2 Sands -> Cost: 0.5 Vilekin per Sand
+            { label: "Amber Vilekin", cost: 0.5, currency: "Items", icon: ICONS.AMBER_VILEKIN },
+
+            // 3. MOONSTONES
+            // Trade: 5 Moonstones = 2 Sands -> Cost: 2.5 Moonstones per Sand
+            { label: "Moonstones", cost: 2.5, currency: "Items", icon: ICONS.MOONSTONE },
+
+            // 4. POETICS (INK + MIST)
+            // Trade: 5 Ink + 5 Mist = 2 Sands. 
+            // Since this is a "Combo", we list the total Poetics cost (225 total / 2 = 112.5)
+            { label: "Ink + Mist (Poetics)", cost: 112.5, currency: "Poetics", icon: '/images/icons/poetics.png' },
         ]
     },
 
-    // --- STAGE 6: Sharpened (i260) ---
+// --- STAGE 6: Sharpened (i260) ---
     {
         id: 'clusters',
         stage: '6. Sharpened (i260)',
@@ -284,11 +322,11 @@ export const ANIMA_DATA = [
         tip: "Do the Weekly Quest (18 clusters) and Daily Quest (1 cluster) in Idyllshire.",
         options: [
             { label: "Poetics", cost: 40, currency: "Poetics", icon: ICONS.POETICS },
-            { label: "Daily/Weekly Quests", cost: 0, currency: "" }
+            { label: "Daily/Weekly Quests", cost: 0, currency: "", icon: ICONS.REPEATQUEST }
         ]
     },
 
-    // --- STAGE 7: Complete (i270) ---
+// --- STAGE 7: Complete (i270) ---
     {
         id: 'pneumite',
         stage: '7. Complete (i270)',
@@ -296,39 +334,42 @@ export const ANIMA_DATA = [
         type: 'item',
         icon: '/images/icons/pneumite.png',
         qty: 15,
-        tip: "Can also be bought with 4,000 GC Seals.",
+        tip: " ",
         options: [
             { label: "Poetics", cost: 100, currency: "Poetics", icon: ICONS.POETICS },
             { label: "GC Seals", cost: 4000, currency: "GC Seals", icon: ICONS.GC_SEALS }
         ]
     },
 
-    // --- STAGE 8: Lux (i275) ---
+// --- STAGE 8/9: The Grand Finale ---
     {
-        id: 'ink',
+        id: 'archaic_ink',
         stage: '8. Lux (i275)',
         name: "Archaic Enchanted Ink",
-        type: 'item',
+        type: 'number',
         icon: '/images/icons/ink.png',
         qty: 1,
-        tip: "Buying this is the easy part. The Primal trials are the hard part.",
+        tip: "Buy from Hismena (Idyllshire) for 500 Poetics.",
         options: [
-            { label: "Poetics", cost: 500, currency: "Poetics", icon: ICONS.POETICS }
+            { label: "Poetics", cost: 500, currency: "Poetics", icon: '/images/icons/poetics.png' }
         ]
     },
-
-    // --- STAGE 9: VICTORY ---
     {
-        id: 'victory_lap',
-        stage: '9. Victory',
-        name: "Weapon Completed",
+        // THIS ID MUST MATCH THE HTML LOGIC ('primal_gauntlet')
+        id: 'primal_gauntlet',
+        stage: '8. Lux (i275)',
+        name: "Primal Gauntlet (Lux)",
         type: 'checklist',
-        icon: ICONS.PLACEHOLDER,
+        icon: '/images/icons/trial.png',
         qty: 1,
-        tip: "Congratulations! You have finished the Anima Weapon.",
-        options: [
-            { label: "All Done", cost: 0, currency: "" }
-        ]
+        tip: "Complete the 12 Trials. Clicking DONE reveals your finished Lux Weapon!",
+        tooltip: [
+            "1. Ifrit (Hard)", "2. Titan (Hard)", "3. Garuda (Hard)",
+            "4. Mog (Hard)", "5. Leviathan (Hard)", "6. Ramuh (Hard)",
+            "7. Shiva (Hard)", "8. Ravana (Hard)", "9. Bismarck (Hard)",
+            "10. Sephirot", "11. Sophia", "12. Zurvan"
+        ],
+        options: [{ label: "Duty Complete", cost: 0, currency: "" }]
     }
 ];
 

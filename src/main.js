@@ -47,10 +47,15 @@ document.addEventListener('alpine:init', () => {
                 }
             } catch (e) { this.selectedJobs = ['PLD']; }
 
-            // Initialize defaults
+         // Initialize safe defaults
             this.items.forEach(item => {
                 if (this.inventory[item.id] === undefined) {
-                    this.inventory[item.id] = item.type === 'checklist' ? false : '';
+                    // NEW: Checklists must be an Array [], not 'false'
+                    this.inventory[item.id] = item.type === 'checklist' ? [] : '';
+                } 
+                // CRITICAL FIX: If old data exists as true/false, force it to become an Array
+                else if (item.type === 'checklist' && !Array.isArray(this.inventory[item.id])) {
+                     this.inventory[item.id] = []; 
                 }
             });
 
@@ -78,10 +83,13 @@ document.addEventListener('alpine:init', () => {
             return item.qty * this.weaponCount;
         },
 
-        getOwned(item) {
+       getOwned(item) {
+            // NEW LOGIC: For checklists, count how many jobs are in the "Done" list
             if (item.type === 'checklist') {
-                return this.inventory[item.id] ? this.getGoal(item) : 0;
+                // Ensure it is an array before checking length to prevent errors
+                return Array.isArray(this.inventory[item.id]) ? this.inventory[item.id].length : 0;
             }
+            // Logic for regular items remains the same
             return parseInt(this.inventory[item.id]) || 0;
         },
 
