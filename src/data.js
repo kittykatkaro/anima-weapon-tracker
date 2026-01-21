@@ -11,6 +11,7 @@ const ICONS = {
     REPEATQUEST: '/images/icons/repeat-quest.png',
     SCRIP: 'images/icons/scrip-token.png',
     TRIAL: 'images/icons/trials.png',
+    FATE: 'images/icons/fate.png',
 
 
 // Tribe Tokens
@@ -42,7 +43,7 @@ export const ANIMA_DATA = [
         qty: 1, 
         tip: "FATEs in Churning Mists. Drop rate is approx 10%.",
         options: [
-            { label: "FATE (Churning Mists)", cost: 0, currency: "" },
+            { label: "FATE (Churning Mists)", cost: 0, currency: "", icon: ICONS.FATE },
         ]
     },
     {
@@ -54,7 +55,7 @@ export const ANIMA_DATA = [
         qty: 1, 
         tip: "FATEs in Azys Lla.",
         options: [
-            { label: "FATE (Azys Lla)", cost: 0, currency: "" },
+            { label: "FATE (Azys Lla)", cost: 0, currency: "", icon: ICONS.FATE },
         ]
     },
     {
@@ -66,7 +67,7 @@ export const ANIMA_DATA = [
         qty: 1, 
         tip: "FATEs in Dravanian Forelands.",
         options: [
-            { label: "FATE (Dravanian Forelands)", cost: 0, currency: "" },
+            { label: "FATE (Dravanian Forelands)", cost: 0, currency: "", icon: ICONS.FATE },
         ]
     },
     {
@@ -78,7 +79,7 @@ export const ANIMA_DATA = [
         qty: 1, 
         tip: "FATEs in Coerthas Western Highlands.",
         options: [
-            { label: "FATE (Coerthas Western)", cost: 0, currency: "" },
+            { label: "FATE (Coerthas Western)", cost: 0, currency: "", icon: ICONS.FATE },
         ]
     },
     {
@@ -90,7 +91,7 @@ export const ANIMA_DATA = [
         qty: 1, 
         tip: "FATEs in Dravanian Hinterlands.",
         options: [
-            { label: "FATE (Dravanian Hinterlands)", cost: 0, currency: "" },
+            { label: "FATE (Dravanian Hinterlands)", cost: 0, currency: "", icon: ICONS.FATE },
         ]
     },
     {
