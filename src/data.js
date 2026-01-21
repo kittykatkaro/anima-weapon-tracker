@@ -1,34 +1,34 @@
 // Global Icon Constants
 const ICONS = {
-	POETICS: "/images/icons/poetics.png",
-	GC_SEALS: "/images/icons/gc-seals.png",
-	GIL: "/images/icons/gil.png",
-	ALLIED_SEALS: "/images/icons/allied-seals.png",
-	PURPLE_SCRIPS: "/images/icons/purple-scrips.png",
-	AMBER_VILEKIN: "/images/icons/amber-vilekin.png",
-	MOONSTONE: "/images/icons/moonstone.png",
-	DUNGEON: "/images/icons/dungeon.png",
-	REPEATQUEST: "/images/icons/repeat-quest.png",
-	SCRIP: "images/icons/scrip-token.png",
-	TRIAL: "images/icons/trials.png",
-	FATE: "images/icons/fate.png",
+	POETICS: "./images/icons/poetics.png",
+	GC_SEALS: "./images/icons/gc-seals.png",
+	GIL: "./images/icons/gil.png",
+	ALLIED_SEALS: "./images/icons/allied-seals.png",
+	PURPLE_SCRIPS: "./images/icons/purple-scrips.png",
+	AMBER_VILEKIN: "./images/icons/amber-vilekin.png",
+	MOONSTONE: "./images/icons/moonstone.png",
+	DUNGEON: "./images/icons/dungeon.png",
+	REPEATQUEST: "./images/icons/repeat-quest.png",
+	SCRIP: "./images/icons/scrip-token.png",
+	TRIAL: "./images/icons/trials.png",
+	FATE: "./images/icons/fate.png",
 
 	// Tribe Tokens
-	AMALJAA: "/images/icons/amaljaa-token.png",
-	SAHAGIN: "/images/icons/sahagin_token.png",
-	KOBOLD: "/images/icons/kobold-token.png",
-	SYLPH: "/images/icons/sylph-token.png",
-	VANU: "/images/icons/vanu-token.png",
-	VATH: "images/icons/vath-token.png",
-	MOOGLE: "images/icons/moogle-token.png",
+	AMALJAA: "./images/icons/amaljaa-token.png",
+	SAHAGIN: "./images/icons/sahagin_token.png",
+	KOBOLD: "./images/icons/kobold-token.png",
+	SYLPH: "./images/icons/sylph-token.png",
+	VANU: "./images/icons/vanu-token.png",
+	VATH: "./images/icons/vath-token.png",
+	MOOGLE: "./images/icons/moogle-token.png",
 
 	// Alexander Precision Parts
-	A1_BOLT: "/images/icons/precision-gordian-bolt.png",
-	A2_LENS: "/images/icons/precision-gordian-lens.png",
-	A3_SHAFT: "/images/icons/precision-gordian-shaft.png",
-	A4_SPRING: "/images/icons/precision-gordian-spring.png",
+	A1_BOLT: "./images/icons/precision-gordian-bolt.png",
+	A2_LENS: "./images/icons/precision-gordian-lens.png",
+	A3_SHAFT: "./images/icons/precision-gordian-shaft.png",
+	A4_SPRING: "./images/icons/precision-gordian-spring.png",
 
-	PLACEHOLDER: "/images/icons/placeholder.png",
+	PLACEHOLDER: "./images/icons/placeholder.png",
 };
 
 export const ANIMA_DATA = [
@@ -38,7 +38,7 @@ export const ANIMA_DATA = [
 		stage: "1. Animated (i170)",
 		name: "Luminous Crystal (Wind)",
 		type: "item",
-		icon: "/images/icons/luminous-wind.png",
+		icon: "./images/icons/luminous-wind.png",
 		qty: 1,
 		tip: "FATEs in Churning Mists. Drop rate is approx 10%.",
 		options: [
@@ -55,7 +55,7 @@ export const ANIMA_DATA = [
 		stage: "1. Animated (i170)",
 		name: "Luminous Crystal (Fire)",
 		type: "item",
-		icon: "/images/icons/luminous-fire.png",
+		icon: "./images/icons/luminous-fire.png",
 		qty: 1,
 		tip: "FATEs in Azys Lla.",
 		options: [
@@ -67,7 +67,7 @@ export const ANIMA_DATA = [
 		stage: "1. Animated (i170)",
 		name: "Luminous Crystal (Lightning)",
 		type: "item",
-		icon: "/images/icons/luminous-lightning.png",
+		icon: "./images/icons/luminous-lightning.png",
 		qty: 1,
 		tip: "FATEs in Dravanian Forelands.",
 		options: [
@@ -84,7 +84,7 @@ export const ANIMA_DATA = [
 		stage: "1. Animated (i170)",
 		name: "Luminous Crystal (Ice)",
 		type: "item",
-		icon: "/images/icons/luminous-ice.png",
+		icon: "./images/icons/luminous-ice.png",
 		qty: 1,
 		tip: "FATEs in Coerthas Western Highlands.",
 		options: [
@@ -101,7 +101,7 @@ export const ANIMA_DATA = [
 		stage: "1. Animated (i170)",
 		name: "Luminous Crystal (Earth)",
 		type: "item",
-		icon: "/images/icons/luminous-earth.png",
+		icon: "./images/icons/luminous-earth.png",
 		qty: 1,
 		tip: "FATEs in Dravanian Hinterlands.",
 		options: [
@@ -118,7 +118,7 @@ export const ANIMA_DATA = [
 		stage: "1. Animated (i170)",
 		name: "Luminous Crystal (Water)",
 		type: "item",
-		icon: "/images/icons/luminous-water.png",
+		icon: "./images/icons/luminous-water.png",
 		qty: 1,
 		tip: "FATEs in The Sea of Clouds.",
 		options: [
@@ -161,7 +161,7 @@ export const ANIMA_DATA = [
 		stage: "3. Anima (i210)",
 		name: "Unidentifiable Bone",
 		type: "item",
-		icon: "/images/icons/unid-bone.png",
+		icon: "./images/icons/unid-bone.png",
 		qty: 10,
 		tip: "Precision Gordian Bolt drops from Alexander - The Fist of the Father (A1).",
 		options: [
@@ -209,7 +209,7 @@ export const ANIMA_DATA = [
 		stage: "3. Anima (i210)",
 		name: "Unidentifiable Shell",
 		type: "item",
-		icon: "/images/icons/unid-shell.png",
+		icon: "./images/icons/unid-shell.png",
 		qty: 10,
 		tip: "Precision Lens drops from Alexander - The Cuff of the Father (A2) Normal.",
 		options: [
@@ -251,7 +251,7 @@ export const ANIMA_DATA = [
 		stage: "3. Anima (i210)",
 		name: "Unidentifiable Ore",
 		type: "item",
-		icon: "/images/icons/unid-ore.png",
+		icon: "./images/icons/unid-ore.png",
 		qty: 10,
 		tip: "Precision Shaft drops from Alexander - The Arm of the Father (A3) Normal.",
 		options: [
@@ -293,7 +293,7 @@ export const ANIMA_DATA = [
 		stage: "3. Anima (i210)",
 		name: "Unidentifiable Seeds",
 		type: "item",
-		icon: "/images/icons/unid-seeds.png",
+		icon: "./images/icons/unid-seeds.png",
 		qty: 10,
 		tip: "Precision Spring drops from Alexander Gordias (A4) Normal.",
 		options: [
@@ -338,7 +338,7 @@ export const ANIMA_DATA = [
 		stage: "3. Anima (i210)",
 		name: "Adamantite Francesca",
 		type: "item",
-		icon: "/images/icons/francesca.png",
+		icon: "./images/icons/francesca.png",
 		qty: 4,
 		tip: "Can also be crafted. Refer to crafting log.",
 		options: [
@@ -355,7 +355,7 @@ export const ANIMA_DATA = [
 		stage: "3. Anima (i210)",
 		name: "Titanium Alloy Mirror",
 		type: "item",
-		icon: "/images/icons/mirror.png",
+		icon: "./images/icons/mirror.png",
 		qty: 4,
 		tip: "Can also be crafted. Refer to crafting log.",
 		options: [
@@ -372,7 +372,7 @@ export const ANIMA_DATA = [
 		stage: "3. Anima (i210)",
 		name: "Dispelling Arrow",
 		type: "item",
-		icon: "/images/icons/arrow.png",
+		icon: "./images/icons/arrow.png",
 		qty: 4,
 		tip: "Can also be crafted. Refer to crafting log.",
 		options: [
@@ -389,7 +389,7 @@ export const ANIMA_DATA = [
 		stage: "3. Anima (i210)",
 		name: "Kingcake",
 		type: "item",
-		icon: "/images/icons/kingcake.png",
+		icon: "./images/icons/kingcake.png",
 		qty: 4,
 		tip: "Can also be crafted. Refer to crafting log.",
 		options: [
@@ -408,7 +408,7 @@ export const ANIMA_DATA = [
 		stage: "4. Hyperconductive (i230)",
 		name: "Aether Oil",
 		type: "item",
-		icon: "/images/icons/aether-oil.png",
+		icon: "./images/icons/aether-oil.png",
 		qty: 5,
 		tip: "Weekly quest 'The Gift of the Archmagus' gives 1 oil.",
 		options: [
@@ -428,7 +428,7 @@ export const ANIMA_DATA = [
 		stage: "5. Reconditioned (i240)",
 		name: "Umbrite",
 		type: "item",
-		icon: "/images/icons/umbrite.png",
+		icon: "./images/icons/umbrite.png",
 		qty: 75,
 		tip: "No other way to get this. Pure Poetics dump.",
 		options: [
@@ -445,7 +445,7 @@ export const ANIMA_DATA = [
 		stage: "5. Reconditioned (i240)",
 		name: "Crystal Sand",
 		type: "item",
-		icon: "/images/icons/crystal-sand.png",
+		icon: "./images/icons/crystal-sand.png",
 		qty: 75,
 		tip: "Trade items to Ulan. Note: Only the most efficient methods are listed below (others exist). Costs are per 1 Sand.",
 		options: [
@@ -483,7 +483,7 @@ export const ANIMA_DATA = [
 				label: "Ink + Mist (Poetics)",
 				cost: 112.5,
 				currency: "Poetics",
-				icon: "/images/icons/poetics.png",
+				icon: "./images/icons/poetics.png",
 			},
 		],
 	},
@@ -494,7 +494,7 @@ export const ANIMA_DATA = [
 		stage: "6. Sharpened (i260)",
 		name: "Singing Cluster",
 		type: "item",
-		icon: "/images/icons/singing-clusters.png",
+		icon: "./images/icons/singing-clusters.png",
 		qty: 50,
 		tip: "Do the Weekly Quest (18 clusters) and Daily Quest (1 cluster) in Idyllshire.",
 		options: [
@@ -514,7 +514,7 @@ export const ANIMA_DATA = [
 		stage: "7. Complete (i270)",
 		name: "Pneumite",
 		type: "item",
-		icon: "/images/icons/pneumite.png",
+		icon: "./images/icons/pneumite.png",
 		qty: 15,
 		tip: "Use GC Seals as they are easier to farm than Poetics.",
 		options: [
@@ -534,7 +534,7 @@ export const ANIMA_DATA = [
 		stage: "8. Lux (i275)",
 		name: "Archaic Enchanted Ink",
 		type: "number",
-		icon: "/images/icons/ink.png",
+		icon: "./images/icons/ink.png",
 		qty: 1,
 		tip: "Buy from Hismena (Idyllshire) for 500 Poetics.",
 		options: [
@@ -542,7 +542,7 @@ export const ANIMA_DATA = [
 				label: "Poetics",
 				cost: 500,
 				currency: "Poetics",
-				icon: "/images/icons/poetics.png",
+				icon: "./images/icons/poetics.png",
 			},
 		],
 	},
@@ -552,7 +552,7 @@ export const ANIMA_DATA = [
 		stage: "8. Lux (i275)",
 		name: "Primal Gauntlet (Lux)",
 		type: "checklist",
-		icon: "/images/icons/trial.png",
+		icon: "./images/icons/trial.png",
 		qty: 1,
 		tip: "Complete the 12 Trials. Clicking DONE reveals your finished Lux Weapon!",
 		tooltip: [
