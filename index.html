@@ -329,12 +329,13 @@
 																class="cursor-pointer group relative"
 																:title="jobId"
 															>
-																<input
-																	type="checkbox"
-																	:value="jobId"
-																	x-model="inventory[item.id]"
-																	class="peer sr-only"
-																/>
+																<input 
+    type="checkbox" 
+    :value="jobId" 
+    x-model="inventory[item.id]" 
+    @change="if(item.id === 'primal_gauntlet') toggleCompleteJob(jobId, $el.checked)"
+    class="peer sr-only"
+>
 
 																<div class="p-1 rounded-md border border-slate-700 bg-slate-800 transition-all duration-200 hover:border-slate-500 hover:scale-110 hover:z-10"
      :class="item.id === 'primal_gauntlet' 
