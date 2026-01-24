@@ -195,10 +195,10 @@ document.addEventListener("alpine:init", () => {
 			event.target.src = "./images/icons/placeholder.png";
 		},
 
-		// NEU: Diese Funktion managed das Hinzufügen UND Entfernen
+		// --- 4. NEW LOGIC FOR JOB COMPLETION TRACKING ---
 		toggleCompleteJob(jobId, isComplete) {
 			this.items.forEach((item) => {
-				// Das Lux-Item selbst überspringen
+				// skip primal gauntlet itself
 				if (item.id === "primal_gauntlet") return;
 
 				if (item.type === "checklist") {
@@ -206,29 +206,50 @@ document.addEventListener("alpine:init", () => {
 						this.inventory[item.id] = [];
 
 					if (isComplete) {
-						// Hinzufügen (Haken setzen)
+						// add
 						if (!this.inventory[item.id].includes(jobId)) {
 							this.inventory[item.id].push(jobId);
 						}
 					} else {
-						// Entfernen (Haken wegnehmen -> Undo)
+						// remove
 						this.inventory[item.id] = this.inventory[item.id].filter(
 							(id) => id !== jobId,
 						);
 					}
 				} else {
-					// Bei Items: Menge hinzufügen oder abziehen
+					// numeric items
 					let current = parseInt(this.inventory[item.id]);
 					if (isNaN(current)) current = 0;
 
 					if (isComplete) {
 						this.inventory[item.id] = current + item.qty;
 					} else {
-						// Wir ziehen die Menge wieder ab, gehen aber nicht unter 0
+						// subtract, but don't go below 0
 						this.inventory[item.id] = Math.max(0, current - item.qty);
 					}
 				}
 			});
+		},
+
+		// 1. Helper to check if a job is complete
+		isJobComplete(jobId) {
+			return (
+				Array.isArray(this.inventory["primal_gauntlet"]) &&
+				this.inventory["primal_gauntlet"].includes(jobId)
+			);
+		},
+
+		// 2. Modified toggleJob to ignore clicks on completed jobs
+		toggleJob(jobId) {
+			// NEW: If the job is complete (purple), ignore the click entirely.
+			// "Nothing happens" - as desired.
+			if (this.isJobComplete(jobId)) return;
+
+			if (this.selectedJobs.includes(jobId)) {
+				this.selectedJobs = this.selectedJobs.filter((id) => id !== jobId);
+			} else {
+				this.selectedJobs.push(jobId);
+			}
 		},
 	}));
 });
