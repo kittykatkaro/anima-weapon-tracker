@@ -54,11 +54,8 @@ document.addEventListener("alpine:init", () => {
 			// Initialize safe defaults
 			this.items.forEach((item) => {
 				if (this.inventory[item.id] === undefined) {
-					// NEW: Checklists must be an Array [], not 'false'
 					this.inventory[item.id] = item.type === "checklist" ? [] : "";
-				}
-				// CRITICAL FIX: If old data exists as true/false, force it to become an Array
-				else if (
+				} else if (
 					item.type === "checklist" &&
 					!Array.isArray(this.inventory[item.id])
 				) {
@@ -79,7 +76,6 @@ document.addEventListener("alpine:init", () => {
 
 		// --- 2. HELPERS ---
 
-		// Dynamic Weapon Count based on selected jobs
 		get weaponCount() {
 			return this.selectedJobs.length || 1;
 		},
@@ -97,14 +93,11 @@ document.addEventListener("alpine:init", () => {
 		},
 
 		getOwned(item) {
-			// NEW LOGIC: For checklists, count how many jobs are in the "Done" list
 			if (item.type === "checklist") {
-				// Ensure it is an array before checking length to prevent errors
 				return Array.isArray(this.inventory[item.id])
 					? this.inventory[item.id].length
 					: 0;
 			}
-			// Logic for regular items remains the same
 			return parseInt(this.inventory[item.id]) || 0;
 		},
 
@@ -112,7 +105,6 @@ document.addEventListener("alpine:init", () => {
 			return Math.max(0, this.getGoal(item) - this.getOwned(item));
 		},
 
-		// Calculate Progress % for a SINGLE Stage
 		getStageProgress(stageName) {
 			const group = this.items.filter((i) => i.stage === stageName);
 			if (!group.length) return 0;
@@ -133,7 +125,6 @@ document.addEventListener("alpine:init", () => {
 
 		// --- 3. UI & GROUPING ---
 
-		// Calculates global % for the top progress bar
 		getTotalProgress() {
 			let totalNeeded = 0;
 			let totalOwned = 0;
@@ -154,7 +145,7 @@ document.addEventListener("alpine:init", () => {
 				this.inventory = {};
 				this.selectedJobs = ["PLD"];
 				this.items.forEach((item) => {
-					this.inventory[item.id] = item.type === "checklist" ? false : "";
+					this.inventory[item.id] = item.type === "checklist" ? [] : "";
 				});
 				localStorage.removeItem("relic_inventory");
 				localStorage.removeItem("relic_jobs");
@@ -200,12 +191,65 @@ document.addEventListener("alpine:init", () => {
 		},
 
 		handleMissingIcon(event) {
-			// 1. Stop the loop!
-			// This prevents the error from firing again if the placeholder also fails.
 			event.target.onerror = null;
-
-			// 2. Set the fallback image
 			event.target.src = "./images/icons/placeholder.png";
+		},
+
+		// --- 4. NEW LOGIC FOR JOB COMPLETION TRACKING ---
+		toggleCompleteJob(jobId, isComplete) {
+			this.items.forEach((item) => {
+				// skip primal gauntlet itself
+				if (item.id === "primal_gauntlet") return;
+
+				if (item.type === "checklist") {
+					if (!Array.isArray(this.inventory[item.id]))
+						this.inventory[item.id] = [];
+
+					if (isComplete) {
+						// add
+						if (!this.inventory[item.id].includes(jobId)) {
+							this.inventory[item.id].push(jobId);
+						}
+					} else {
+						// remove
+						this.inventory[item.id] = this.inventory[item.id].filter(
+							(id) => id !== jobId,
+						);
+					}
+				} else {
+					// numeric items
+					let current = parseInt(this.inventory[item.id]);
+					if (isNaN(current)) current = 0;
+
+					if (isComplete) {
+						this.inventory[item.id] = current + item.qty;
+					} else {
+						// subtract, but don't go below 0
+						this.inventory[item.id] = Math.max(0, current - item.qty);
+					}
+				}
+			});
+		},
+
+		// 1. Helper to check if a job is complete
+		isJobComplete(jobId) {
+			return (
+				Array.isArray(this.inventory["primal_gauntlet"]) &&
+				this.inventory["primal_gauntlet"].includes(jobId)
+			);
+		},
+
+		// 2. Modified toggleJob to ignore clicks on completed jobs
+		toggleJob(jobId) {
+			// NEW: If the job is complete (purple), ignore the click entirely.
+			// "Nothing happens" - as desired.
+			if (this.isJobComplete(jobId)) return;
+
+			if (this.selectedJobs.includes(jobId)) {
+				this.selectedJobs = this.selectedJobs.filter((id) => id !== jobId);
+			} else {
+				this.selectedJobs.push(jobId);
+			}
 		},
 	}));
 });

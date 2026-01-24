@@ -1,50 +1,52 @@
 ﻿# FFXIV Anima Weapon Tracker
 
-A comprehensive, interactive web application to track progress on the **Heavensward Relic Weapon (Anima)** questline for Final Fantasy XIV.
+An interactive, intelligent tracker for the **Heavensward Relic Weapon (Anima)** questline in Final Fantasy XIV.
 
-Built with **Alpine.js** and **Tailwind CSS**. No build steps required—just open `index.html`.
+Built with **Alpine.js**, **Tailwind CSS**, and **Vite**.
+
+<img src="./public/images/main.jpg" width="800" alt="App Screenshot">
 
 ## 🌟 Key Features
 
-### 1. Smart Job Management (3-State Logic)
-The job selector at the top helps you manage your collection:
-* **OFF (Gray):** You are not working on this weapon.
-* **ACTIVE (Yellow):** You are currently building this weapon. Costs are added to your shopping list.
-* **DONE (Green):** You have finished this weapon. It is removed from the cost calculation but remains visible as a trophy.
+### 1. Intelligent Job Management
 
-### 2. Liability Calculator (Dynamic Footer)
-The sticky footer automatically calculates the **Total Cost** for all your **Active** jobs. It tracks:
-* Allagan Tomestones of Poetics
-* Grand Company Seals
-* Scrip Tokens (Crafter/Gatherer)
-* Allied Seals
-* Key Items & Leve Allowances
+The tracker distinguishes between three states for each weapon:
 
-*Note: If a currency cost is 0, it automatically hides from the footer to keep the UI clean.*
+- **Gray (Inactive):** Ignored.
+- **Yellow (Active):** You are currently working on this weapon. Costs are calculated.
 
-### 3. Smart Automation
-* **Auto-Complete:** Checking the final "Primal Gauntlet" box (Stage 9) automatically moves that job from **Active** to **Done**.
-* **Weapon Reveal:** Upon completion, the job icon physically transforms into the finished **Lux Weapon** icon.
+### 2. Smart "Auto-Complete" Logic (Stage 8) 🧠
 
-### 4. Stage-by-Stage Guidance
-* **Stage 5 (Crystal Sand):** Includes a calculator for different trade-in methods (Scrips, Moonstones, Poetics, Leves).
-* **Checklists:** Integrated checklists for Dungeon and Primal runs that persist per job.
+No more tedious clicking!
+
+- **One-Click Completion:** When you check "Primal Gauntlet" in **Stage 8 (Lux)**, the app automatically fills **all** required items (dungeons, tokens, materials) for that job into your inventory.
+- **Smart Undo:** Clicked by mistake? Uncheck the box, and the app restores your inventory to exactly the state it was in before.
+- **Visual Reward:** The Job Icon transforms into the glowing **Lux Weapon Icon** upon completion.
+
+### 3. Live Resource Calculator
+
+The footer ("Resources") shows you live what you still need to farm.
+
+- It sums up costs only for **active** (yellow) jobs.
+- Calculates Poetics, Grand Company Seals, Allied Seals, and Scrip Tokens.
+- **Clean UI:** Currencies you don't need (Value = 0) are automatically hidden.
+
+### 4. Detailed Helpers & Tools
+
+- **Dungeon Reference:** Stage 2 features a tooltip listing all 10 required dungeons per job for quick reference.
+- **Sand Efficiency:** Stage 5 displays the most efficient trade-in methods. _Note: Costs are calculated per single Crystal Sand._
+- **Persistence:** Your progress is automatically saved in the browser (`localStorage`).
+
+---
 
 ## 🛠️ Project Structure
 
-```text
-/
-├── index.html       # Main UI structure and layout
-├── src/
-│   ├── main.js      # Core logic (Alpine.js component, math, automation)
-│   └── data.js      # Static data (Items, Stages, Job list)
-└── public/
-    └── images/
-        ├── jobs/    # Job icons (PLD.png, etc.)
-        ├── weapons/ # Finished Lux weapon icons (PLD.png, etc.)
-        └── icons/   # Item icons (poetics.png, sand.png, etc.)
-```
+- `src/main.js`: Core logic (Alpine.js component, math, auto-complete).
+- `src/data.js`: Static data regarding items, stages, and jobs.
+- `index.html`: Layout and UI design.
+
+---
 
 ## ⚖️ Legal
 
-Final Fantasy XIV is a registered trademark of Square Enix. This tool is a fan-made resource and is not affiliated with Square Enix.
+Final Fantasy XIV is a registered trademark of Square Enix. This tool is a fan project and is not affiliated with Square Enix.

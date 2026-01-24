@@ -573,7 +573,7 @@ export const ANIMA_DATA = [
 	},
 ];
 
-// New Constant: List of all Jobs available for Anima Weapons
+// List of all Jobs available for Anima Weapons
 export const JOBS = [
 	{ id: "PLD", label: "Paladin", role: "tank" },
 	{ id: "WAR", label: "Warrior", role: "tank" },
@@ -590,7 +590,7 @@ export const JOBS = [
 	{ id: "SMN", label: "Summoner", role: "dps" },
 ];
 
-// New Constant: Descriptions for each stage
+// List of all Jobs available for Anima Weapons
 export const STAGE_INFO = {
 	"1. Animated (i170)": "Farm FATEs in Heavensward zones to get crystals.",
 	"2. Awoken (i200)": "Run 10 specific dungeons with your weapon equipped.",
