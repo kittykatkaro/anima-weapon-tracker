@@ -182,8 +182,14 @@ document.addEventListener("alpine:init", () => {
 						(o) =>
 							o.currency === currencyName || o.label.includes(currencyName),
 					);
+
 					if (option && option.cost > 0) {
-						total += remaining * option.cost;
+						// If the item has a 'yield' property (like Crystal Sand yielding 2),
+						// calculate how many trades are needed. Default to 1 if no yield defined.
+						const yieldPerTrade = item.yield || 1;
+						const tradesNeeded = Math.ceil(remaining / yieldPerTrade);
+
+						total += tradesNeeded * option.cost;
 					}
 				}
 			});

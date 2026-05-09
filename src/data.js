@@ -447,41 +447,30 @@ export const ANIMA_DATA = [
 		type: "item",
 		icon: "./images/icons/crystal-sand.png",
 		qty: 75,
-		tip: "Trade items to Ulan. Note: Only the most efficient methods are listed below (others exist). Costs are per 1 Sand.",
+		yield: 2, // Add this property to indicate 1 trade = 2 items
+		tip: "Trade items to Ulan. Each trade yields 2 Crystal Sands.",
 		options: [
-			// 1. SCRIP TOKENS
-			// Trade: 5 Blue Tokens = 2 Sands -> Cost: 2.5 Tokens per Sand
 			{
 				label: "Blue Crafters' Scrip Token",
-				cost: 2.5,
+				cost: 5, // Actual cost per trade
 				currency: "Tokens",
 				icon: ICONS.SCRIP,
 			},
-
-			// 2. LEVEQUEST ITEM
-			// Trade: 1 Amber-encased Vilekin = 2 Sands -> Cost: 0.5 Vilekin per Sand
 			{
 				label: "Amber Vilekin",
-				cost: 0.5,
+				cost: 1, // Actual cost per trade
 				currency: "Items",
 				icon: ICONS.AMBER_VILEKIN,
 			},
-
-			// 3. MOONSTONES
-			// Trade: 5 Moonstones = 2 Sands -> Cost: 2.5 Moonstones per Sand
 			{
 				label: "Moonstones",
-				cost: 2.5,
+				cost: 5, // Actual cost per trade
 				currency: "Items",
 				icon: ICONS.MOONSTONE,
 			},
-
-			// 4. POETICS (INK + MIST)
-			// Trade: 5 Ink + 5 Mist = 2 Sands.
-			// Since this is a "Combo", we list the total Poetics cost (225 total / 2 = 112.5)
 			{
 				label: "Ink + Mist (Poetics)",
-				cost: 112.5,
+				cost: 450, // 5 Ink (225) + 5 Mist (225)
 				currency: "Poetics",
 				icon: "./images/icons/poetics.png",
 			},
